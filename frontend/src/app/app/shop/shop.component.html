@@ -1,0 +1,5 @@
+<shop-header [cartOpened]="cartOpened" (cartOpenedChange)="onCartOpenedChange($event)"></shop-header>
+<div class="container">
+  <catalog *ngIf="!cartOpened"></catalog>
+  <cart *ngIf="cartOpened"></cart>
+</div>

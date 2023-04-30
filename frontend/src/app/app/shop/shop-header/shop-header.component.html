@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="logo" >
+    <p class="tui-text_h6">MY SHOP</p>
+  </div>
+  <button
+    tuiButton
+    type="button"
+    icon="tuiIconSearch"
+    class="tui-space_right-3"
+    [disabled]="!cartOpened"
+    (click)="onCatalogClick()"
+  >
+    Catalog
+  </button>
+  <button
+    tuiButton
+    type="button"
+    icon="tuiIconHeart"
+    class="tui-space_right-3"
+    [disabled]="cartOpened"
+    (click)="onCartClick()"
+  >
+    Cart
+  </button>
+</div>

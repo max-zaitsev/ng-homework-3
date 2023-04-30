@@ -1,0 +1,72 @@
+<form class="form" [formGroup]="form" (submit)="submit()">
+  <div class="tui-form__row">
+    <tui-combo-box
+      [strict]="true"
+      [strictMatcher]="strictMatcher"
+      formControlName="countryInput"
+      [stringify]="stringify"
+    >
+      Country
+      <tui-data-list *tuiDataList>
+        <button
+          *ngFor="let country of countriesService.countries | tuiFilterByInputWith: stringify"
+          tuiOption
+          [value]="country"
+        >
+          {{ country.name }}
+        </button>
+      </tui-data-list>
+    </tui-combo-box>
+    <tui-error
+      formControlName="countryInput"
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
+  </div>
+
+
+  <div class="tui-form__row">
+    <tui-input tuiTextfieldSize="s" formControlName="addressInput">
+      Address
+    </tui-input>
+    <tui-error
+      formControlName="addressInput"
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
+  </div>
+
+  <div class="tui-form__row">
+    <tui-input tuiTextfieldSize="s" formControlName="nameInput">
+      Name
+    </tui-input>
+    <tui-error
+      formControlName="nameInput"
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
+  </div>
+
+  <div class="tui-form__row">
+    <tui-input tuiTextfieldSize="s" formControlName="emailInput">
+      Email
+    </tui-input>
+    <tui-error
+      formControlName="emailInput"
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
+  </div>
+
+  <div class="tui-form__row buttons">
+    <button
+      [disabled]="form.invalid"
+      tuiButton
+      class="tui-form__button"
+      size="s"
+      type="submit"
+    >
+      Make order
+    </button>
+  </div>
+</form>
+
+<ng-template #content let-data>
+  {{ data }}
+</ng-template>

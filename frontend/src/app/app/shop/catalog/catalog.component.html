@@ -1,0 +1,8 @@
+<div class="container">
+  <product-card
+    *ngFor="let p of positionsArr"
+    [position]="p"
+    (addToCart)="onItemAdd($event)"
+  ></product-card>
+</div>
+

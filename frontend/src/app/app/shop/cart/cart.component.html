@@ -1,0 +1,26 @@
+<div *ngIf="cartService.cartItems.length > 0" class="container">
+  <ng-container
+    *ngFor="let c of cartService.cartItems">
+    <ng-container *tuiLet="positionsService.getPositionById(c.positionId) as position">
+      <cart-item
+        *ngIf="position !== undefined"
+        [cartItem]="c"
+        (deleteItem)="onItemDelete($event)"
+        (changeQuantity)="onItemQuantityChange($event)"
+        [position]="position"
+      ></cart-item>
+    </ng-container>
+  </ng-container>
+
+  <div class="total">
+  <span
+    class="tui-text_h5"
+  >Total: {{(cartService.summary * currenciesService.currentCurrency.exchangeRate) | currency: currenciesService.currentCurrency.code : 'symbol-narrow' }}</span>
+  </div>
+
+  <cart-form></cart-form>
+</div>
+<div *ngIf="cartService.cartItems.length == 0" class="container">
+  <h2 class="tui-text_h2"
+  >The cart is empty!</h2>
+</div>
